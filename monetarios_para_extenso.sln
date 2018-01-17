@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "monetarios_para_extenso", "monetarios_para_extenso\monetarios_para_extenso.csproj", "{D46E76E0-232C-4B86-A1E1-7EB1C65A967D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "monetarios_para_extenso.Tests", "monetarios_para_extenso.Tests\monetarios_para_extenso.Tests.csproj", "{67244613-8DD3-41DC-A334-B9C0CF5377D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D46E76E0-232C-4B86-A1E1-7EB1C65A967D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46E76E0-232C-4B86-A1E1-7EB1C65A967D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46E76E0-232C-4B86-A1E1-7EB1C65A967D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46E76E0-232C-4B86-A1E1-7EB1C65A967D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67244613-8DD3-41DC-A334-B9C0CF5377D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67244613-8DD3-41DC-A334-B9C0CF5377D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67244613-8DD3-41DC-A334-B9C0CF5377D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67244613-8DD3-41DC-A334-B9C0CF5377D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53ED314D-71F8-4CD3-B6F1-756C846D89DF}
+	EndGlobalSection
+EndGlobal
