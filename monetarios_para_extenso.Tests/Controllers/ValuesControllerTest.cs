@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Web.Http;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using monetarios_para_extenso;
 using monetarios_para_extenso.Controllers;
 
 namespace monetarios_para_extenso.Tests.Controllers
@@ -24,11 +18,11 @@ namespace monetarios_para_extenso.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual("Valor Inválido", result.ElementAt(0));
+            Assert.AreEqual("Valor Inválido", result);
         }
 
         [TestMethod]
-        public void ConverteValoresDecimais()
+        public void TestConverteValoresDecimais()
         {
             // Arrange
             ValuesController controller = new ValuesController();
@@ -42,8 +36,23 @@ namespace monetarios_para_extenso.Tests.Controllers
 
         }
 
+        [TestMethod]
+        public void TestConverteValoresValidos()
+        {
+            // Arrange
+            ValuesController controller = new ValuesController();
 
+            // Act
+            string result = controller.Convert(33);
 
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual("trinta e três", result);
+
+            result = controller.Convert(45);
+
+            Assert.AreEqual("quarenta e cinco", result);
+        }
 
     }
 }
