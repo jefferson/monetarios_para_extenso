@@ -32,6 +32,27 @@ namespace monetarios_para_extenso.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
+
+            Assert.AreEqual("Valor Inválido", result);
+
+        }
+
+        [TestMethod]
+        public void TestConverteValoresInvalidos()
+        {
+            // Arrange
+            ValuesController controller = new ValuesController();
+
+            string result = controller.Convert(13.92);
+
+            Assert.AreEqual("Valor Inválido", result);
+
+            result = controller.Convert(-23.00);
+
+            Assert.AreEqual("Valor Inválido", result);
+
+            result = controller.Convert(1456);
+
             Assert.AreEqual("Valor Inválido", result);
 
         }
@@ -47,11 +68,20 @@ namespace monetarios_para_extenso.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual("trinta e três", result);
+
+            Assert.AreEqual("trinta e três reais", result);
 
             result = controller.Convert(45);
 
-            Assert.AreEqual("quarenta e cinco", result);
+            Assert.AreEqual("quarenta e cinco reais", result);
+
+            result = controller.Convert(42);
+
+            Assert.AreEqual("quarenta e dois reais", result);
+
+            result = controller.Convert(678);
+
+            Assert.AreEqual("seiscentos e setenta e oito reais", result);
         }
 
     }

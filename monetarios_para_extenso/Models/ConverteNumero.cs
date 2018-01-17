@@ -18,7 +18,7 @@ namespace monetarios_para_extenso.Models
                 case "7":
                     return "setecentos";
                 case "6":
-                    return "seissentos";
+                    return "seiscentos";
                 case "5":
                     return "quinhentos";
                 case "4":
@@ -119,7 +119,7 @@ namespace monetarios_para_extenso.Models
                 part_b = _number.ToString()[1].ToString();
                 part_c = _number.ToString()[2].ToString();
 
-                return $"{centenas(part_a)} e {decimais_part_b(part_b)} e {decimais_part_a(part_c)}";
+                return $"{centenas(part_a)} e {decimais_part_b(part_b)} e {decimais_part_a(part_c)} reais";
             }
 
             else if(_number < 100 && _number > 0)
@@ -129,14 +129,14 @@ namespace monetarios_para_extenso.Models
                     part_a = _number.ToString()[0].ToString();
                     part_b = _number.ToString()[1].ToString();
 
-                    return $"{decimais_part_b(part_a)} e {decimais_part_a(part_b)}";
+                    return $"{decimais_part_b(part_a)} e {decimais_part_a(part_b)} reais";
 
                 }
                 else
                 {
                     part_a = _number.ToString();
 
-                    return $"{decimais_part_a(part_a)}";
+                    return $"{decimais_part_a(part_a)} reais";
                 }
 
             }
@@ -151,6 +151,9 @@ namespace monetarios_para_extenso.Models
                 return "Zero";
 
             if (_number < 0)
+                return "Valor Inválido";
+
+            if (_number > 999)
                 return "Valor Inválido";
 
             if (_number % 1 != 0)
