@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace monetarios_para_extenso.Models
@@ -113,20 +114,13 @@ namespace monetarios_para_extenso.Models
             var part_b = String.Empty;
             var part_c = String.Empty;
 
-            var prefixo = String.Empty;
-
-            if (_number < 0)
-                prefixo = "menos ";
-
-            _number = Math.Abs(_number);
-
             if (_number >= 100 && _number <= 999)
             {
                 part_a = _number.ToString()[0].ToString();
                 part_b = _number.ToString()[1].ToString();
                 part_c = _number.ToString()[2].ToString();
 
-                return $"{prefixo}{centenas(part_a)} e {decimais_part_b(part_b)} e {decimais_part_a(part_c)} reais";
+                return $"{centenas(part_a)} e {decimais_part_b(part_b)} e {decimais_part_a(part_c)}";
             }
 
             else if(_number < 100)
@@ -136,14 +130,14 @@ namespace monetarios_para_extenso.Models
                     part_a = _number.ToString()[0].ToString();
                     part_b = _number.ToString()[1].ToString();
 
-                    return $"{prefixo}{decimais_part_b(part_a)} e {decimais_part_a(part_b)} reais";
+                    return $"{decimais_part_b(part_a)} e {decimais_part_a(part_b)}";
 
                 }
                 else
                 {
                     part_a = _number.ToString();
 
-                    return $"{prefixo}{decimais_part_a(part_a)} reais";
+                    return $"{decimais_part_a(part_a)}";
                 }
 
             }
@@ -160,10 +154,30 @@ namespace monetarios_para_extenso.Models
             if (_number > 999)
                 return "Valor Inválido";
 
-            if (_number % 1 != 0)
-                return "Valor Inválido";
+            var result = new StringBuilder();
 
-            return _convert(_number);
+            if (_number < 0)
+                result.Append("menos ");
+
+            _number = Math.Abs(_number);
+
+            int inteiro = (int)_number;
+
+            double fracionaria = (_number % 1) * 100;
+
+            if(inteiro > 0)
+            {
+                var _decimal = _convert(inteiro);
+                result.Append(_decimal).Append(" reais");
+            }
+
+            if(fracionaria > 0)
+            {
+                var _fracionaria = _convert(fracionaria);
+                result.Append(" ").Append("e ").Append(_fracionaria).Append(" centavos");
+            }
+
+            return result.ToString();
         }
 
     }
