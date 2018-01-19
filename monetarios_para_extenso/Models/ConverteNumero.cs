@@ -113,30 +113,37 @@ namespace monetarios_para_extenso.Models
             var part_b = String.Empty;
             var part_c = String.Empty;
 
-            if(_number >= 100 && _number <= 999)
+            var prefixo = String.Empty;
+
+            if (_number < 0)
+                prefixo = "menos ";
+
+            _number = Math.Abs(_number);
+
+            if (_number >= 100 && _number <= 999)
             {
                 part_a = _number.ToString()[0].ToString();
                 part_b = _number.ToString()[1].ToString();
                 part_c = _number.ToString()[2].ToString();
 
-                return $"{centenas(part_a)} e {decimais_part_b(part_b)} e {decimais_part_a(part_c)} reais";
+                return $"{prefixo}{centenas(part_a)} e {decimais_part_b(part_b)} e {decimais_part_a(part_c)} reais";
             }
 
-            else if(_number < 100 && _number > 0)
+            else if(_number < 100)
             {
                 if(_number > 19)
                 {
                     part_a = _number.ToString()[0].ToString();
                     part_b = _number.ToString()[1].ToString();
 
-                    return $"{decimais_part_b(part_a)} e {decimais_part_a(part_b)} reais";
+                    return $"{prefixo}{decimais_part_b(part_a)} e {decimais_part_a(part_b)} reais";
 
                 }
                 else
                 {
                     part_a = _number.ToString();
 
-                    return $"{decimais_part_a(part_a)} reais";
+                    return $"{prefixo}{decimais_part_a(part_a)} reais";
                 }
 
             }
@@ -148,10 +155,7 @@ namespace monetarios_para_extenso.Models
         public static string convert(double _number)
         {
             if (_number == 0)
-                return "Zero";
-
-            if (_number < 0)
-                return "Valor Inválido";
+                return "Zero";           
 
             if (_number > 999)
                 return "Valor Inválido";
